@@ -2,13 +2,15 @@
 
 ## Introduction: Konane
 
-Also known as Hawaiian checkers, [konane](https://en.wikipedia.org/wiki/Konane) is a strategy game played between two
+Also known as Hawaiian Checkers, [Konane](https://en.wikipedia.org/wiki/Konane) is a strategy game played between two
 players. Players alternate taking turns, capturing their opponent's pieces by jumping their own pieces over them (if 
-you're familiar with checkers, there is a strong structural analogy to be made here). The first player to be unable to
+you're familiar with checkers, there is a strong structural analogy to be made here, except the jumping is not diagonal but orthogonal, and while multiple jumps are allowed in a turn, all jumps have to occur in the same direction). The first player to be unable to
 capture any of their opponent's pieces loses.
 
 The full rules can be read *[here](https://en.wikipedia.org/wiki/Konane#Rules_and_gameplay)* or
-*[here](http://www.konanebrothers.com/How-to-Play.html)*. Here's my (rather terse) version, though:
+*[here](http://www.konanebrothers.com/How-to-Play.html)*, and *[here's](https://www.youtube.com/watch?v=09AAT29uaGE)* a nice video explaining the rules simply as well.
+
+Here's a (rather terse) version of the rules, though:
 
 
 ![Konane Board](pictures/board.jpg "Board")
@@ -32,8 +34,7 @@ moves in the same direction and captures at least one piece.
 
 ## Play the game
 
-In this assignment, you'll be implementing minimax and alpha-beta pruning for an agent playing one such game—that of
-konane. But first, you should get familiar with how the game is played. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
+In this assignment, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
 Notably, you don't need to actually _make_ the game of konane—just to make an agent that plays it.
 
 Run the following from your terminal:
@@ -49,10 +50,10 @@ You can change the game settings by passing in values to `python main.py`. You n
 * D (Deterministic)—the agent will select the first move that it finds (the leftmost option in the tree) during its 
 traversal.
 * R (Random)—the agent will pick a random move.
-* M (Minimax)—the agent will pick a move using the minimax algorithm. You will be prompted for a max. search depth.
-* A (Alpha-beta pruning)—the agent will pick a move using AB pruning. You will be prompted for a max. search depth.
+* M (Minimax)—the agent will pick a move using the Minimax algorithm. You will be prompted for a maximum search depth.
+* A (Alpha-Beta pruning)—the agent will pick a move using A-B pruning. You will be prompted for a maximum search depth.
 
-Passing in an invalid number or type of arguments will result in the system defaulting to a human vs a random player.
+Passing in an invalid number or type of arguments will result in the system defaulting to a human vs. a random player.
 
 ## Your task
 
@@ -63,21 +64,16 @@ Programming is hard. :(
 
 ### Part 1: Minimax
 
-Minimax is an algorithm for determing the best move in an adverserial game. Its objective is to find the move that 
-_maximizes_ the gain for the player while _minimizing_ their loss. Since "maximin" sounds kind of dumb, we get 
-"minimax." Minimax is typically employed in competitive, discrete- and finite-space games with abstracted time and 
-perfect information.
-
-You will complete the implementation of `MinimaxPlayer` in `player.py`. In your implementation, you need to be aware of 2 things: the max depth and the evaluation function.  The max depth is provided to the constructor of the `MinimaxPlayer` and defines the maximum number of plies that the player will simulate when choosing a move.  The evaluation function defines a score for a terminal node in the search.  Use the function `h1` defined in the parent class `Player` as your evaluation function.
+You will complete the implementation of `MinimaxPlayer` in `player.py`. In your implementation, you need to be aware of 2 things: the maximum depth and the evaluation function.  The maximum depth is provided to the constructor of the `MinimaxPlayer` and defines the maximum number of plies that the player will simulate when choosing a move.  The evaluation function defines a score for a terminal node in the search.  Use the function `h1` defined in the parent class `Player` as your evaluation function.
 
 Please leave the `selectInitialX` and `selectInitialO` methods alone; all of the editing that you need to do takes place in `getMove`. As always, feel free to add any methods/classes you feel that you need, provided that you change only `player.py`.
 
 
 ### Part 2: Alpha-Beta Pruning
 
-You may notice that minimax starts to get terribly slow when you set your maximum search depth to values above, say, 4.
+You may notice that Minimax starts to get terribly slow when you set your maximum search depth to values above, say, 4.
 This makes perfect sense when you think about the fact that the total number of nodes in your game tree is the branching
-factor to the power of the search depth. For comparatively "bushy" games (e.g., _chess_, _go_, etc.) the branching
+factor to the power of the search depth. For comparatively "bushy" games (e.g., _chess_, _Go_, etc.) the branching
 factor is prohibitively large, which is why agents that play these games use cleverer algorithms to choose what move to
 take next.
 

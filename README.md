@@ -2,13 +2,15 @@
 
 ## Introduction: Konane
 
-Also known as Hawaiian checkers, [konane](https://en.wikipedia.org/wiki/Konane) is a strategy game played between two
+Also known as Hawaiian Checkers, [Konane](https://en.wikipedia.org/wiki/Konane) is a strategy game played between two
 players. Players alternate taking turns, capturing their opponent's pieces by jumping their own pieces over them (if 
-you're familiar with checkers, there is a strong structural analogy to be made here). The first player to be unable to
+you're familiar with checkers, there is a strong structural analogy to be made here, except the jumping is not diagonal but orthogonal, and while multiple jumps are allowed in a turn, all jumps have to occur in the same direction). The first player to be unable to
 capture any of their opponent's pieces loses.
 
 The full rules can be read *[here](https://en.wikipedia.org/wiki/Konane#Rules_and_gameplay)* or
-*[here](http://www.konanebrothers.com/How-to-Play.html)*. Here's my (rather terse) version, though:
+*[here](http://www.konanebrothers.com/How-to-Play.html)*, and *[here's](https://www.youtube.com/watch?v=09AAT29uaGE)* a nice video explaining the rules simply as well.
+
+Here's a (rather terse) version of the rules, though:
 
 
 ![Konane Board](pictures/board.jpg "Board")
@@ -32,8 +34,7 @@ moves in the same direction and captures at least one piece.
 
 ## Play the game
 
-In this assignment, you'll be implementing minimax and alpha-beta pruning for an agent playing one such game—that of
-konane. But first, you should get familiar with how the game is played. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
+In this assignment, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
 Notably, you don't need to actually _make_ the game of konane—just to make an agent that plays it.
 
 Run the following from your terminal:
@@ -49,10 +50,10 @@ You can change the game settings by passing in values to `python main.py`. You n
 * D (Deterministic)—the agent will select the first move that it finds (the leftmost option in the tree) during its 
 traversal.
 * R (Random)—the agent will pick a random move.
-* M (Minimax)—the agent will pick a move using the minimax algorithm. You will be prompted for a max. search depth.
-* A (Alpha-beta pruning)—the agent will pick a move using AB pruning. You will be prompted for a max. search depth.
+* M (Minimax)—the agent will pick a move using the Minimax algorithm. You will be prompted for a maximum search depth.
+* A (Alpha-Beta pruning)—the agent will pick a move using A-B pruning. You will be prompted for a maximum search depth.
 
-Passing in an invalid number or type of arguments will result in the system defaulting to a human vs a random player.
+Passing in an invalid number or type of arguments will result in the system defaulting to a human vs. a random player.
 
 ## Your task
 
@@ -63,41 +64,38 @@ Programming is hard. :(
 
 ### Part 1: Minimax
 
-Minimax is an algorithm for determing the best move in an adverserial game. Its objective is to find the move that 
-_maximizes_ the gain for the player while _minimizing_ their loss. Since "maximin" sounds kind of dumb, we get 
-"minimax." Minimax is typically employed in competitive, discrete- and finite-space games with abstracted time and 
-perfect information.
+Minimax is an algorithm for determing the best move in an adverserial game. It seeks to minimize the maximum loss posed by the opponent’s strategy. Minimax is typically employed in competitive, discrete-, and finite-space games with abstracted time and perfect information.
 
-You will complete the implementation of `MinimaxPlayer` in `player.py`. In your implementation, you need to be aware of 2 things: the max depth and the evaluation function.  The max depth is provided to the constructor of the `MinimaxPlayer` and defines the maximum number of plies that the player will simulate when choosing a move.  The evaluation function defines a score for a terminal node in the search.  Use the function `h1` defined in the parent class `Player` as your evaluation function.
+You will complete the implementation of `MinimaxPlayer` in `player.py`. In your implementation, you need to be aware of 2 things: the maximum depth and the evaluation function.  The maximum depth is provided to the constructor of the `MinimaxPlayer` and defines the maximum number of plies that the player will simulate when choosing a move.  The evaluation function defines a score for a terminal node in the search.  Use the function `h1` defined in the parent class `Player` as your evaluation function.
 
 Please leave the `selectInitialX` and `selectInitialO` methods alone; all of the editing that you need to do takes place in `getMove`. As always, feel free to add any methods/classes you feel that you need, provided that you change only `player.py`.
 
 
 ### Part 2: Alpha-Beta Pruning
 
-You may notice that minimax starts to get terribly slow when you set your maximum search depth to values above, say, 4.
+You may notice that Minimax starts to get terribly slow when you set your maximum search depth to values above, say, 4.
 This makes perfect sense when you think about the fact that the total number of nodes in your game tree is the branching
-factor to the power of the search depth. For comparatively "bushy" games (e.g., _chess_, _go_, etc.) the branching
+factor to the power of the search depth. For comparatively "bushy" games (e.g., _chess_, _Go_, etc.) the branching
 factor is prohibitively large, which is why agents that play these games use cleverer algorithms to choose what move to
 take next.
 
-One such cleverer algorithm (although still not clever enough to do well at games like _GO_) is a modification of
-minimax known as _alpha-beta pruning_. They are, at their core, the _same algorithm_. The distinction is that AB pruning
+One such cleverer algorithm (although still not clever enough to do well at games like _Go_) is a modification of
+Minimax known as _Alpha-Beta Pruning_. They are, at their core, the _same algorithm_. The distinction is that A-B Pruning
 _ignores_ subtrees that are provably worse than any that it has considered so far. This drastically reduces the runtime
-of the algorithm.\* Since AB pruning is a variant on minimax, you aren't really writing a new algorithm; rather, you're
-taking your implementation of minimax and making it a little smarter.
+of the algorithm.\* Since A-B Pruning is a variant of Minimax, you aren't really writing a new algorithm; rather, you're
+taking your implementation of Minimax and making it a little smarter.
 
 \* Strictly speaking, it doesn't change the upper bound on the algorithm's runtime, since in the worst-case one must
 still search the entire tree. In practice, however, the performance difference is very noticeable.
 
-As with Minimax, your task is to complete the implementation of `AlphaBetaPlayer`. You will need to again consider the max depth and the evaluation function.
+As with Minimax, your task is to complete the implementation of `AlphaBetaPlayer`. You will need to again consider the maximum depth and the evaluation function.
 
 
 ### Testing Your Work
 
 You can manually test your work by playing against your agent yourself, or by having the agents play against each other.
-We've also included a few tests for kicking the tires on your implementations of minimax and alpha-beta pruning. You can
-find those tests in `test.py` and you can run them with:
+We've also included a few tests for kicking the tires on your implementations of Minimax and Alpha-Beta Pruning. You can
+find those tests in `test.py`, and you can run them with:
 ```bash
 python test.py
 ```
@@ -114,22 +112,22 @@ replaced with a determinstic player instead.
 keys and the spacebar to select your actions.
 * `test.py`—run tests with `python test.py`.
 * `game_manager.py`—holds the board representation and handles turn-taking.
-* `game_rules.py`—code determining available moves/their legality, etc.
+* `game_rules.py`—code determining available moves, their legality, etc.
 * You can change the type of player, the board size, etc. in `main.py`
 
 
 
-On AB pruning:
+On A-B Pruning:
 
-* It's worth noting that alpha-beta produces answers which look more or less the same as vanilla minimax (they should be
-identical, given that your search pattern hasn't changed), but alpha-beta will run substantially faster. The grading rig
-will use timeouts in its tests, so ordinary minimax won't be fast enough to get you full credit for this part of the
+* It's worth noting that Alpha-Beta Pruning produces answers that look more or less the same as vanilla Minimax (they should be
+identical, given that your search pattern hasn't changed), but Alpha-Beta will run substantially faster. The grading rig
+will use timeouts in its tests, so ordinary Minimax won't be fast enough to get you full credit for this part of the
 assignment.
-* To see the difference between minimax and alpha-beta, just run the game at progressively deeper search depths. You
+* To see the difference between Minimax and Alpha-Beta, just run the game at progressively deeper search depths. You
 won't see much of a difference at a depth of 2, but the difference between the two at depth 5 is extreme.
 
 
 On additional fun:
 
-* Try out a better evaluation function.  Define an `h2` and see how it does.  Can it do better than the `h1` evaluation function?  Note that we will use `h1` for grading, so be sure to have your Minimax and AlphaBeta players setup to use `h1` in your final submission.
-* Can you beat AlphaBeta?  Use `main.py` to play against the computer and see if you can win.
+* Try out a better evaluation function.  Define an `h2`, and see how it does.  Can it do better than the `h1` evaluation function?  Note that we will use `h1` for grading, so be sure to have your Minimax and Alpha-Beta players set up to use `h1` in your final submission.
+* Can you beat Alpha-Beta?  Use `main.py` to play against the computer and see if you can win.

@@ -1,4 +1,4 @@
-# Assignment 4—Game Search
+# Assignment 2—Game Engine
 
 ## Introduction: Konane
 

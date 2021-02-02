@@ -1,4 +1,5 @@
-# Assignment 2—Game Engine
+# HW 2—Game Engine
+
 
 ## Introduction: Konane
 
@@ -34,7 +35,7 @@ moves in the same direction and captures at least one piece.
 
 ## Play the game
 
-In this assignment, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
+In this homework, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
 Notably, you don't need to actually _make_ the game of konane—just to make an agent that plays it.
 
 Run the following from your terminal:
@@ -59,7 +60,7 @@ Passing in an invalid number or type of arguments will result in the system defa
 
 Now that you know how the game is played, it is time to make your own intelligent players of the game.  You will do this my implementing one player that use Minimax and another player that uses Alpha-Beta Pruning.
 
-__For this assignment, make sure that you are running Python 3.6 or later.__ We don't know _why_ it matters, but the test results vary based on the version.
+__For this homework, make sure that you are running Python 3.6 or later.__ We don't know _why_ it matters, but the test results vary based on the version.
 Programming is hard. :(
 
 ### Part 1: Minimax
@@ -122,7 +123,7 @@ On A-B Pruning:
 * It's worth noting that Alpha-Beta Pruning produces answers that look more or less the same as vanilla Minimax (they should be
 identical, given that your search pattern hasn't changed), but Alpha-Beta will run substantially faster. The grading rig
 will use timeouts in its tests, so ordinary Minimax won't be fast enough to get you full credit for this part of the
-assignment.
+homework.
 * To see the difference between Minimax and Alpha-Beta, just run the game at progressively deeper search depths. You
 won't see much of a difference at a depth of 2, but the difference between the two at depth 5 is extreme.
 

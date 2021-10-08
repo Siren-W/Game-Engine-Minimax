@@ -35,7 +35,9 @@ moves in the same direction and captures at least one piece.
 
 ## Play the game
 
-In this homework, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
+In this homework, you'll be implementing Minimax and Alpha-Beta Pruning for an agent playing Konane. Wait, isn't Alpha-Beta Pruning a variant of Minimax? Yes, it is. **It's just that here we're using Minimax and Alpha-Beta Pruning to respectively refer to Minimax WITHOUT Alpha-Beta Pruning and Minimax WITH Alpha-Beta Pruning.**
+
+But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
 **Notably, you don't need to actually _make_ the game of Konane—just to make an agent that plays it.**
 
 Run the following from your terminal:

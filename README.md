@@ -1,4 +1,4 @@
-# HW 2—Game Engine
+# HW2—Game Engine
 
 
 ## Introduction: Konane

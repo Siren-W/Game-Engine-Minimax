@@ -134,3 +134,4 @@ On additional fun:
 
 * Try out a better evaluation function.  Define an `h2`, and see how it does.  Can it do better than the `h1` evaluation function?  Note that we will use `h1` for grading, so be sure to have your Minimax and Alpha-Beta players set up to use `h1` in your final submission.
 * Can you beat Alpha-Beta?  Use `main.py` to play against the computer and see if you can win.
+

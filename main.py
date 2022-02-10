@@ -133,7 +133,7 @@ def MakeBoard(p1, p2):
     iterations = 1 
     depth = 3
     rows, cols = 10, 10
-    gm = game_manager.GameManager(rows, cols, player.makePlayer(p1, 'x', depth), player.makePlayer(p2, 'o', depth), True)
+    gm = game_manager.GameManager(rows, cols, player.makePlayer(p1, 'x', depth), player.makePlayer(p2, 'o', depth), verbose=True)
     signal.signal(signal.SIGABRT, gm.interrupt)
     signal.signal(signal.SIGINT,  gm.interrupt)
     signal.signal(signal.SIGQUIT, gm.interrupt)

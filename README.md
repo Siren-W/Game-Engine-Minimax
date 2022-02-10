@@ -40,6 +40,8 @@ In this homework, you'll be implementing Minimax and Alpha-Beta Pruning for an a
 But first, you should get _practically_ familiar with how the game is played, not just be familiar with the rules of the game. To do this, play the game with the provided code. You've been distributed a codebase which includes an interface for playing the game in a variety of modes.
 **Notably, you don't need to actually _make_ the game of Konane—just to make an agent that plays it.**
 
+_Playing the game interactively may only work on Linux and Mac.  However, this is not required for completing the assignment and is only provided to help you get familiar with the game (and for your entertainment)._
+
 Run the following from your terminal:
 ```bash
 python main.py $P1 $P2
@@ -62,7 +64,7 @@ Passing in an invalid number or type of arguments will result in the system defa
 
 Now that you know how the game is played, it is time to make your own intelligent players of the game.  You will do this my implementing one player that use Minimax and another player that uses Alpha-Beta Pruning.
 
-__For this homework, make sure that you are running Python 3.6 or later.__ We don't know _why_ it matters, but the test results vary based on the version.
+__For this homework, make sure that you are running Python 3.6 - 3.7.__ These versions ensure that the legal move ordering is the same as what is expected by the tests.
 Programming is hard. :(
 
 ### Part 1: Minimax
@@ -104,6 +106,12 @@ python test.py
 ```
 
 In designing your own tests, consider different board sizes (always square), depths for searching, and time to execute.  The timeouts provided in `test.py` should be generous, so see if you can do much better. It is worth noting that the tests can take upwards of five minutes to complete, so don't freak out. :)
+
+
+To help with debugging and generating new tests, each play of the game automatically records all moves to `game.log`.  The log can be helpful for comparing the sequence of moves in your implementation and in the implementation of others.  For example, we provide a `game1.log` that is the correct sequence of moves for `test1`.
+
+The logs can also be used to create specific test scenarios.  The logs can be used to play the game.  For examples, `test1s` is identical to `test1` except it is completely a scripted replay using `game1.log`.  You can truncate existing log files to automatically replay a part of a game, perhaps advancing the game to where you have a possible bug.  Alternatively, you can create your own log files manually, creating completely new scenarios to test.
+
 
 ## Notes
 

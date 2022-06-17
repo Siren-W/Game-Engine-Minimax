@@ -24,7 +24,7 @@ class Player(object):
     def getMove(self, board): pass
 
     def h1(self, board, symbol):
-        return -len(game_rules.getLegalMoves(board, 'o' if self.symbol == 'x' else 'x'))
+        return -len(game_rules.getLegalMoves(board, 'o' if symbol == 'x' else 'x'))
 
 
 # This class has been replaced with the code for a deterministic player.

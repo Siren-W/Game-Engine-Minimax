@@ -1,5 +1,5 @@
 import game_manager, game_rules, signal, unittest
-from another_player import makePlayer
+from player import makePlayer
 
 
 class GameTest(unittest.TestCase):
